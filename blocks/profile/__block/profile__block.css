@@ -1,0 +1,7 @@
+.profile__block {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: fit-content(120px) 1fr fit-content(150px);
+  width: 100%;
+  gap: 30px;
+}

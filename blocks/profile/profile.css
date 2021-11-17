@@ -1,0 +1,10 @@
+.profile {
+  width: 100%;
+  max-width: 1280px;
+  margin: 40px 0 51px 0;
+  padding: 28px 200px 0 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+}
