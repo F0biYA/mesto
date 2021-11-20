@@ -5,3 +5,9 @@
   gap: 16px;
   align-self: center;
 }
+
+@media screen and (max-width:767px) {
+  .profile__info {
+    gap: 10px;
+  }
+}

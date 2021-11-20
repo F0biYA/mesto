@@ -8,3 +8,17 @@
   align-self: center;
   background: none;
 }
+
+.profile__button-edit:hover {
+  opacity: .6;
+  cursor: pointer;
+  transition: opacity .5s ease-in-out;
+}
+
+@media screen and (max-width:767px) {
+  .profile__button-edit {
+    width: 18px;
+    height: 18px;
+    margin-left: 0;
+  }
+}
