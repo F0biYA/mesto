@@ -24,6 +24,7 @@ function formSubmitHandler(evt) {
   console.log(profileJob);
   document.querySelector('.profile__title').textContent = profileName;
   document.querySelector('.profile__job').textContent = profileJob;
+  closePop();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
