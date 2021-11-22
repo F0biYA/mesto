@@ -21,13 +21,12 @@
           <img class="profile__image" src="images/photo-profile.jpg" alt="Фото Профиля">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__button-edit">
+            <button type="button" class="profile__button-edit">
               <img src="images/edit.svg" alt="редактировать">
             </button>
             <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__button-add">
-            <img src="images/plus.svg" alt="Плюсик">
+          <button type="button" class="profile__button-add">
           </button>
         </div>
       </section>
@@ -37,58 +36,69 @@
           <img src="images/kirill-pershin-karachaevsk.jpg" alt="Карачаево-Черкессия" class="card__image">
           <div class="card__caption">
             <h2 class="card__text">Карачаево-Черкессия</h2>
-            <img src="images/heart.svg" class="card__heart" alt="">
+            <button type="button" class="card__heart">
+              <img src="images/heart.svg" alt="Лайк">
+            </button>
           </div>
         </div>
         <div class="card">
           <img src="images/kirill-pershin-1404681-elbrus.jpg" alt="Эльбрус" class="card__image">
           <div class="card__caption">
             <h2 class="card__text">Эльбрус</h2>
-            <img src="images/heart.svg" class="card__heart" alt="">
+            <button type="button" class="card__heart">
+              <img src="images/heart.svg" alt="Лайк">
+            </button>
           </div>
         </div>
         <div class="card">
           <img src="images/kirill-pershin-1556355-dombay.jpg" alt="Домбай" class="card__image">
           <div class="card__caption">
             <h2 class="card__text">Домбай</h2>
-            <img src="images/heart.svg" class="card__heart" alt="">
+            <button type="button" class="card__heart">
+              <img src="images/heart.svg" alt="Лайк">
+            </button>
           </div>
         </div>
         <div class="card">
           <img src="images/kirill-pershin-karachaevsk.jpg" alt="Карачаево-Черкессия" class="card__image">
           <div class="card__caption">
             <h2 class="card__text">Карачаево-Черкессия</h2>
-            <img src="images/heart.svg" class="card__heart" alt="">
+            <button type="button" class="card__heart">
+              <img src="images/heart.svg" alt="Лайк">
+            </button>
           </div>
         </div>
         <div class="card">
           <img src="images/kirill-pershin-1404681-elbrus.jpg" alt="Эльбрус" class="card__image">
           <div class="card__caption">
             <h2 class="card__text">Эльбрус</h2>
-            <img src="images/heart.svg" class="card__heart" alt="">
+            <button type="button" class="card__heart">
+              <img src="images/heart.svg" alt="Лайк">
+            </button>
           </div>
         </div>
         <div class="card">
           <img src="images/kirill-pershin-1556355-dombay.jpg" alt="Домбай" class="card__image">
           <div class="card__caption">
             <h2 class="card__text">Домбай</h2>
-            <img src="images/heart.svg" class="card__heart" alt="">
+            <button type="button" class="card__heart">
+              <img src="images/heart.svg" alt="Лайк">
+            </button>
           </div>
         </div>
       </section>
-      <section class="popup">
+      <div class="popup">
         <div class="popup__container">
-          <button class="popup__button-close">
+          <button type="button" class="popup__button-close">
           </button>
-
-          <form class="form">
+          <form name="input form" class="form">
             <h3 class="form__title">Редактировать профиль</h3>
-            <input type="text" name="Имя" value="Жак-Ив Кусто" class="form__field form__name">
-            <input type="text" name="О себе" value="Исследователь океана" class="form__field form__job">
-            <input type="submit" class="form__submit" value="Cохранить">
+            <input type="text" name="fullname" value="Жак-Ив Кусто" class="form__field form__field_name">
+            <input type="text" name="job" value="Исследователь океана" class="form__field form__field_job">
+            <button type="submit" class="form__submit">Сохранить</button>
           </form>
         </div>
-      </section>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
