@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
+  <script src="scripts/index.js" defer></script>
   <title>Mesto Russia</title>
 </head>
 
@@ -32,71 +33,38 @@
       </section>
 
       <section class="cards">
-        <div class="card">
-          <img src="images/kirill-pershin-karachaevsk.jpg" alt="Карачаево-Черкессия" class="card__image">
-          <div class="card__caption">
-            <h2 class="card__text">Карачаево-Черкессия</h2>
-            <button type="button" class="card__heart">
-              <img src="images/heart.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kirill-pershin-1404681-elbrus.jpg" alt="Эльбрус" class="card__image">
-          <div class="card__caption">
-            <h2 class="card__text">Эльбрус</h2>
-            <button type="button" class="card__heart">
-              <img src="images/heart.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kirill-pershin-1556355-dombay.jpg" alt="Домбай" class="card__image">
-          <div class="card__caption">
-            <h2 class="card__text">Домбай</h2>
-            <button type="button" class="card__heart">
-              <img src="images/heart.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kirill-pershin-karachaevsk.jpg" alt="Карачаево-Черкессия" class="card__image">
-          <div class="card__caption">
-            <h2 class="card__text">Карачаево-Черкессия</h2>
-            <button type="button" class="card__heart">
-              <img src="images/heart.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kirill-pershin-1404681-elbrus.jpg" alt="Эльбрус" class="card__image">
-          <div class="card__caption">
-            <h2 class="card__text">Эльбрус</h2>
-            <button type="button" class="card__heart">
-              <img src="images/heart.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="images/kirill-pershin-1556355-dombay.jpg" alt="Домбай" class="card__image">
-          <div class="card__caption">
-            <h2 class="card__text">Домбай</h2>
-            <button type="button" class="card__heart">
-              <img src="images/heart.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
       </section>
-      <div class="popup">
+
+      <div class="popup popup_profile">
         <div class="popup__container">
-          <button type="button" class="popup__button-close">
+          <button type="button" class="popup__button-close popup__button-close_profile">
           </button>
-          <form name="input form" class="form">
+          <form name="profile form" class="form form_profile">
             <h3 class="form__title">Редактировать профиль</h3>
-            <input type="text" name="fullname" value="Жак-Ив Кусто" class="form__field form__field_input_name">
-            <input type="text" name="job" value="Исследователь океана" class="form__field form__field_input_job">
+            <input type="text" name="fullname" placeholder="Жак-Ив Кусто" class="form__field form__field_input_name">
+            <input type="text" name="job" placeholder="Исследователь океана" class="form__field form__field_input_job">
             <button type="submit" class="form__submit">Сохранить</button>
           </form>
+        </div>
+      </div>
+      <div class="popup popup_card">
+        <div class="popup__container">
+          <button type="button" class="popup__button-close_card popup__button-close">
+          </button>
+          <form name="card form" class="form form_card">
+            <h3 class="form__title">Новое место</h3>
+            <input type="text" name="place" placeholder="Название" class="form__field form__field_input_place">
+            <input name="link" placeholder="Ссылка на картинку" class="form__field form__field_input_link">
+            <button type="submit" class="form__submit">Создать</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_image">
+        <div class="popup__image-container">
+          <button type="button" class="popup__button-close_image popup__button-close">
+          </button>
+          <img src="" class="popup__image" alt="">
+          <p class="popup__image-caption"></p>
         </div>
       </div>
     </main>
@@ -104,7 +72,17 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <script src="scripts/index.js"></script>
+
+  <template class="template_card">
+    <div class="card">
+      <img src="" alt="" class="card__image">
+      <div class="card__caption">
+        <h2 class="card__text"></h2>
+        <button type="button" class="card__button-heart"></button>
+        <button type="button" class="card__button-delete"></button>
+      </div>
+    </div>
+  </template>
 </body>
 
 </html>
