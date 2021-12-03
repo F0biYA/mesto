@@ -35,14 +35,14 @@ const popupProfile = document.querySelector('.popup_profile');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
 const popup = document.querySelector('.popup');
-let formProfileElement = document.querySelector('.form_profile');
-let nameInput = formProfileElement.querySelector('.form__field_input_name');
-let jobInput = formProfileElement.querySelector('.form__field_input_job');
-let profileName = document.querySelector('.profile__title');
-let profileJob = document.querySelector('.profile__job');
-let formCardElement = document.querySelector('.form_card');
-let linkInput = document.querySelector('.form__field_input_link');
-let placeInput = document.querySelector('.form__field_input_place');
+const formProfileElement = document.querySelector('.form_profile');
+const nameInput = formProfileElement.querySelector('.form__field_input_name');
+const jobInput = formProfileElement.querySelector('.form__field_input_job');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__job');
+const formCardElement = document.querySelector('.form_card');
+const linkInput = document.querySelector('.form__field_input_link');
+const placeInput = document.querySelector('.form__field_input_place');
 
 function renderCard() {
   const cardHtml = initialCards.map((item, idx, arr) => {
@@ -79,14 +79,14 @@ const closePop = popup => popup.classList.remove('popup_opened');             /*
 
 
 
-function formSubmitProfile(evt) {                                  /*Функция Отправка формы профиля*/
+function submitFormProfile(evt) {                                  /*Функция Отправка формы профиля*/
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   closePop(popupProfile);
 }
 
-function formSubmitCard(evt) {                                /*Функция Отправка формы карты*/
+function submitFormCard(evt) {                                /*Функция Отправка формы карты*/
   evt.preventDefault();
   const createCard = getCard({ name: placeInput.value, link: linkInput.value });
   cardContainer.prepend(createCard);
@@ -104,6 +104,6 @@ openPopupProfile.addEventListener('click', () => {                   /*слуш�
 closeBtnPopupCrd.addEventListener('click', () => closePop(popupCard));  /*слушатель кнопки закрытия карт*/
 closeBtnPopupPrf.addEventListener('click', () => closePop(popupProfile));/*слушатель кнопки закртия профиля*/
 closeBtnPopupImg.addEventListener('click', () => closePop(popupImage));
-formProfileElement.addEventListener('submit', formSubmitProfile);  /*слушатель отправки формы профиля*/
-formCardElement.addEventListener('submit', formSubmitCard);         /*слушатель отправки формы карт*/
+formProfileElement.addEventListener('submit', submitFormProfile);  /*слушатель отправки формы профиля*/
+formCardElement.addEventListener('submit', submitFormCard);         /*слушатель отправки формы карт*/
 renderCard();                                                       /*создание карты*/
