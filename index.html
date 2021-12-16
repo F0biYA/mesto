@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
   <script src="scripts/index.js" defer></script>
+  <script src="scripts/validate.js" defer></script>
   <title>Mesto Russia</title>
 </head>
 
@@ -41,8 +42,12 @@
           </button>
           <form name="profile form" class="form form_profile">
             <h3 class="form__title">Редактировать профиль</h3>
-            <input type="text" name="fullname" placeholder="Жак-Ив Кусто" class="form__field form__field_input_name">
-            <input type="text" name="job" placeholder="Исследователь океана" class="form__field form__field_input_job">
+            <input id="name" type="text" name="fullname" placeholder="Жак-Ив Кусто"
+              class="form__field form__field_input_name" required minlength="2" maxlength="40">
+            <span id="name-error" class=""></span>
+            <input id="job" type="text" name="job" placeholder="Исследователь океана"
+              class="form__field form__field_input_job" required minlength="2" maxlength="200">
+            <span id="job-error" class=""></span>
             <button type="submit" class="form__submit">Сохранить</button>
           </form>
         </div>
@@ -51,10 +56,14 @@
         <div class="popup__container">
           <button type="button" class="popup__button-close_card popup__button-close">
           </button>
-          <form name="card form" class="form form_card">
-            <h3 class="form__title">Новое место</h3>
-            <input type="text" name="place" placeholder="Название" class="form__field form__field_input_place">
-            <input name="link" placeholder="Ссылка на картинку" class="form__field form__field_input_link">
+          <form name="card form" class=" form form_card">
+            <h3 class="form__title ">Новое место</h3>
+            <input id="place" type="text" name="place" placeholder="Название"
+              class="form__field form__field_input_place " required minlength="2" maxlength="30">
+            <span id="place-error" class=""></span>
+            <input id="link" name="link" type="url" placeholder="Ссылка на картинку"
+              class="form__field form__field_input_link " required>
+            <span id="link-error" class=""></span>
             <button type="submit" class="form__submit">Создать</button>
           </form>
         </div>
