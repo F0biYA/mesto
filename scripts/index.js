@@ -26,11 +26,11 @@ const initialCards = [
 ];
 const cardContainer = document.querySelector('.cards');
 const templateCard = document.querySelector('.template_card');
-const BtnOpenPopupCard = document.querySelector('.profile__button-add');   /*кнопка открытия попапа карт*/
-const BtnOpenPopupProfile = document.querySelector('.profile__button-edit');  /*кнопка открытия попапа профиля*/
-const BtnClosePopupPrf = document.querySelector('.popup__button-close_profile'); /*кнопка закрытия попапа профиля*/
-const BtnClosePopupCrd = document.querySelector('.popup__button-close_card'); /*кнопка закрытия попапа карт*/
-const BtnClosePopupImg = document.querySelector('.popup__button-close_image'); /*кнопка закрытия попапа фото*/
+const btnOpenPopupCard = document.querySelector('.profile__button-add');   /*кнопка открытия попапа карт*/
+const btnOpenPopupProfile = document.querySelector('.profile__button-edit');  /*кнопка открытия попапа профиля*/
+const btnClosePopupPrf = document.querySelector('.popup__button-close_profile'); /*кнопка закрытия попапа профиля*/
+const btnClosePopupCrd = document.querySelector('.popup__button-close_card'); /*кнопка закрытия попапа карт*/
+const btnClosePopupImg = document.querySelector('.popup__button-close_image'); /*кнопка закрытия попапа фото*/
 const popupProfile = document.querySelector('.popup_profile');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
@@ -112,13 +112,13 @@ function submitFormCard(evt) {                                /*Функция �
 
 }
 
-BtnOpenPopupCard.addEventListener('click', () => openPop(popupCard));   /*слушатель кнопки добавления карт*/
-BtnOpenPopupProfile.addEventListener('click', () => {                   /*слушатель кнопки реадкатирвания профиля*/
+btnOpenPopupCard.addEventListener('click', () => openPop(popupCard));   /*слушатель кнопки добавления карт*/
+btnOpenPopupProfile.addEventListener('click', () => {                   /*слушатель кнопки реадкатирвания профиля*/
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPop(popupProfile)
 });
-BtnClosePopupCrd.addEventListener('click', () => closePop(popupCard));  /*слушатель кнопки закрытия карт*/
+btnClosePopupCrd.addEventListener('click', () => closePop(popupCard));  /*слушатель кнопки закрытия карт*/
 
 
 popupArray.forEach((popup) => {                           //Функция закрытия по щелчку без дополнительного Оверлея
@@ -129,8 +129,8 @@ popupArray.forEach((popup) => {                           //Функция за�
   });
 });
 
-BtnClosePopupPrf.addEventListener('click', () => closePop(popupProfile));/*слушатель кнопки закртия профиля*/
-BtnClosePopupImg.addEventListener('click', () => closePop(popupImage));
+btnClosePopupPrf.addEventListener('click', () => closePop(popupProfile));/*слушатель кнопки закртия профиля*/
+btnClosePopupImg.addEventListener('click', () => closePop(popupImage));
 formProfileElement.addEventListener('submit', submitFormProfile);  /*слушатель отправки формы профиля*/
 formCardElement.addEventListener('submit', submitFormCard);         /*слушатель отправки формы карт*/
 addInitialCards(initialCards);                                                       /*создание карты*/
