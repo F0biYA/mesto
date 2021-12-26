@@ -1,5 +1,14 @@
-import {initialCards} from "./cards.js";
+import { initialCards } from "./cards.js";
 import Card from "./card.js";
+import FormValidator from "./FormValidator.js";
+const validationOptions = {
+  formSelector: '.form',
+  inputSelector: '.form__field',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__field_type_error',
+  errorClass: 'form__error'
+};
 const cardContainer = document.querySelector('.cards');
 const btnOpenPopupCard = document.querySelector('.profile__button-add');   /*кнопка открытия попапа карт*/
 const btnOpenPopupProfile = document.querySelector('.profile__button-edit');  /*кнопка открытия попапа профиля*/
@@ -23,19 +32,19 @@ function addInitialCards(card) {            /* Добавляем в верст�
   cardContainer.prepend(card);
 }
 function createCard(card) {
-  const newCard = new Card (card);
+  const newCard = new Card(card, '.template_card');
   return newCard;
 }
 const renderInitialCards = () => {          // для каждого эл-та заданного массива вызываем ф-цию создания карточки, затем функцию добавления карточки
-  initialCards.forEach (function (item) {
+  initialCards.forEach(function (item) {
 
-      const cardElement = createCard(item).getCard();
-      addInitialCards(cardElement);
+    const cardElement = createCard(item).getCard();
+    addInitialCards(cardElement);
   });
 }
 renderInitialCards();
 
- const openPop = popup => {             /*открытие попапов*/
+const openPop = popup => {             /*открытие попапов*/
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByKey);
 }
@@ -65,7 +74,7 @@ function submitFormProfile(evt) {                                  /*Функц�
 
 function submitFormCard(evt) {                                /*Функция Отправка формы создания новой карточки*/
   evt.preventDefault();
-  const card = {              /*присваиваем вводимые поля*/
+  const card = {
     name: placeInput.value,
     link: linkInput.value,
   };
@@ -80,8 +89,12 @@ function submitFormCard(evt) {                                /*Функция �
 
 }
 
-btnOpenPopupCard.addEventListener('click', () => openPop(popupCard));   /*слушатель кнопки добавления карт*/
+btnOpenPopupCard.addEventListener('click', () => { /*слушатель кнопки добавления карт*/
+  addCardFormValidator.deleteErrors()
+  openPop(popupCard)
+});
 btnOpenPopupProfile.addEventListener('click', () => {                   /*слушатель кнопки реадкатирвания профиля*/
+  editProfileFormValidator.deleteErrors();
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPop(popupProfile)
@@ -97,7 +110,13 @@ popupArray.forEach((popup) => {                           //Функция за�
   });
 });
 
-btnClosePopupPrf.addEventListener('click', () => closePop(popupProfile));/*слушатель кнопки закртия профиля*/
-btnClosePopupImg.addEventListener('click', () => closePop(popupImage));
+btnClosePopupPrf.addEventListener('click', () => closePop(popupProfile)); /*слушатель кнопки закртия формы профиля*/
+btnClosePopupImg.addEventListener('click', () => closePop(popupImage));   /*слушатель кнопки закртия формы карточек*/
 formProfileElement.addEventListener('submit', submitFormProfile);  /*слушатель отправки формы профиля*/
 formCardElement.addEventListener('submit', submitFormCard);         /*слушатель отправки формы карт*/
+
+
+const addCardFormValidator = new FormValidator(validationOptions, formCardElement);  //валидатор для формы добавления карточек
+const editProfileFormValidator = new FormValidator(validationOptions, formProfileElement); //вадиадтор для формы добавления карточек
+addCardFormValidator.enableValidation();
+editProfileFormValidator.enableValidation();

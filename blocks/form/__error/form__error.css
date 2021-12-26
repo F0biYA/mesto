@@ -6,4 +6,7 @@
   font-size: 12px;
   line-height: 15px;
   color: #FF0000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

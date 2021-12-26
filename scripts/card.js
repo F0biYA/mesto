@@ -1,13 +1,14 @@
 import openPop from "./index.js";
 class Card {
-  constructor(card) {
+  constructor(card, selector) {
 
     this._image = card.link;
     this._title = card.name;
+    this._selector = selector;
 
   }
   _getTemplate() {        //метод получения template элемента и кланирования его в DOM, на выходе  Template элемент
-    return document.querySelector('.template_card')
+    return document.querySelector(this._selector)
       .content
       .querySelector('.card')
       .cloneNode(true)
