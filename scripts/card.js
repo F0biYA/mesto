@@ -1,4 +1,7 @@
 import openPopup from "./index.js";
+import { cardImage } from "./index.js";
+import {popupImage} from "./index.js";
+import {cardCaption} from "./index.js";
 class Card {
   constructor(card, selector) {
     this._image = card.link;
@@ -33,10 +36,10 @@ class Card {
 
    /* метод окрытия увеличенного изображения*/
   _handlePopupOpen = () => {
-    document.querySelector('.popup__image').src = this._image;
-    document.querySelector('.popup__image').alt = this._title;
-    document.querySelector('.popup__image-caption').textContent = this._title;
-    openPopup(document.querySelector('.popup_image'));
+    cardImage.src = this._image;
+    cardImage.alt = this._title;
+    cardCaption.textContent = this._title;
+    openPopup(popupImage);
   }
 
 /*метод удаления карточки*/

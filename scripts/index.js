@@ -25,8 +25,11 @@ const btnClosePopupImg = document.querySelector('.popup__button-close_image');
 const popupProfile = document.querySelector('.popup_profile');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
+
  /*МАССИВ для закрытия по щелчку*/
 const popupsArray = document.querySelectorAll('.popup');
+const cardImage = document.querySelector('.popup__image');
+const cardCaption = document.querySelector('.popup__image-caption');
 const btnSubmitCard = document.querySelector('.form__submit-card');
 const formProfileElement = document.querySelector('.form_profile');
 const nameInput = formProfileElement.querySelector('.form__field_input_name');
@@ -152,3 +155,6 @@ editProfileFormValidator.enableValidation();
 
 /*экспорт функции открытия для ипользования в модуле JS Card*/
 export default openPopup;
+export  {cardImage} ;
+export {popupImage} ;
+export {cardCaption};
