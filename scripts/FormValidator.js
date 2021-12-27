@@ -9,27 +9,33 @@ class FormValidator {
     this._button = this._form.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
   }
-  deleteErrors() {           //публичной метод устранения ошибок при открытии форм
+
+  /*публичный метод устранения ошибок при открытии форм*/
+  deleteErrors() {
     this._inputList.forEach((inputSelector) => {
       this._form.querySelector(`#${inputSelector.id}-error`).textContent = '';
       inputSelector.classList.remove('form__field_type_error');
     });
   }
-  _showError(input, errorMessageText) {  //метод добавления ошибки
+
+/*метод добавления ошибки*/
+  _showError(input, errorMessageText) {
     const errorMessage = this._form.querySelector(`#${input.id}-error`);
     errorMessage.textContent = errorMessageText;
     errorMessage.classList.add(this._errorClass);
     input.classList.add(this._inputErrorClass);
   }
 
-  _hideError(input) {                            //метод снятия ошибки
+/*метод снятия ошибки*/
+  _hideError(input) {
     const errorMessage = this._form.querySelector(`#${input.id}-error`);
     errorMessage.textContent = '';
     errorMessage.classList.remove(this._errorClass);
     input.classList.remove(this._inputErrorClass);
   }
 
-  _checkInputValid(input) {  //метод проверки на валидность
+/*метод проверки на валидность*/
+  _checkInputValid(input) {
     if (!input.validity.valid) {
       this._showError(input, input.validationMessage);
     } else {
@@ -37,7 +43,8 @@ class FormValidator {
     }
   }
 
-  _setEventListeners() {  // метод добавления обработчиков на все поля ввода
+/* метод добавления обработчиков на все поля ввода*/
+  _setEventListeners() {
     this._toggleButtonError();
     this._inputList.forEach((inputSelector) => {
       inputSelector.addEventListener('input', () => {
@@ -47,12 +54,13 @@ class FormValidator {
     });
   }
 
-
-  _hasInvalidInput() {                                //метод проверки всех элементов инпут методом Some (возвращние первой ошибки)
+ /*метод проверки всех элементов инпут методом Some (возвращение первой ошибки)*/
+  _hasInvalidInput() {
     return this._inputList.some((inputSelector) => !inputSelector.validity.valid);
   }
 
-  _toggleButtonError() {                    //метод деактивации кнопки
+/*метод деактивации кнопки*/
+  _toggleButtonError() {
     if (this._hasInvalidInput()) {
       this._button.classList.add(this._inactiveButtonClass);
       this._button.disabled = true;
@@ -63,8 +71,8 @@ class FormValidator {
     }
   }
 
-
-  enableValidation() {   // метод  валидации
+/* метод  валидации*/
+  enableValidation() {
     this._form.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
@@ -72,4 +80,5 @@ class FormValidator {
   }
 
 }
+/*экспорт класса для использования в модуле Index JS*/
 export default FormValidator;
