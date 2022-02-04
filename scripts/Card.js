@@ -1,12 +1,10 @@
-import openPopup from "./index.js";
-import { cardImage } from "./index.js";
-import {popupImage} from "./index.js";
-import {cardCaption} from "./index.js";
-class Card {
-  constructor(card, selector) {
+
+export default class Card {
+  constructor(card, selector, handleCardClick) {
     this._image = card.link;
     this._title = card.name;
     this._selector = selector;
+    this._handleCardClick = handleCardClick;
   }
 
  /*метод получения template элемента и кланирования его в DOM, на выходе  Template элемент*/
@@ -21,7 +19,7 @@ class Card {
   _getListeners() {
     this._tempCard.querySelector('.card__button-delete').addEventListener('click', this._handleDeleteCard);
     this._tempCard.querySelector('.card__button-heart').addEventListener('click', this._handleLikeCard);
-    this._tempCard.querySelector('.card__image').addEventListener('click', this._handlePopupOpen);
+   this._tempCard.querySelector('.card__image').addEventListener('click', this._handleCardClick);
   }
 
   /*публичный метод создания карточек*/
@@ -34,13 +32,6 @@ class Card {
     return this._tempCard;
   }
 
-   /* метод окрытия увеличенного изображения*/
-  _handlePopupOpen = () => {
-    cardImage.src = this._image;
-    cardImage.alt = this._title;
-    cardCaption.textContent = this._title;
-    openPopup(popupImage);
-  }
 
 /*метод удаления карточки*/
   _handleDeleteCard = () => {
@@ -53,5 +44,3 @@ class Card {
     this._tempCard.querySelector('.card__button-heart').classList.toggle('card__button-heart_active');
   }
 }
-/*экспорт класса ждя использования в модуле Index JS*/
-export default Card;
