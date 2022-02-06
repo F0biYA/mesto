@@ -17,15 +17,19 @@ export default class Card {
 
   /*метод  "навешивания" слушателей на кнопки */
   _getListeners() {
+    const data = { name: this._title, link: this._image };
     this._tempCard.querySelector('.card__button-delete').addEventListener('click', this._handleDeleteCard);
     this._tempCard.querySelector('.card__button-heart').addEventListener('click', this._handleLikeCard);
-   this._tempCard.querySelector('.card__image').addEventListener('click', this._handleCardClick);
+   this._tempCard.querySelector('.card__image').addEventListener('click', () => { // при клике на элемент открываем попап
+    this._handleCardClick(data);
+  });
   }
 
   /*публичный метод создания карточек*/
   getCard() {
     this._tempCard = this._getTemplate();
     this._tempCard.querySelector('.card__text').textContent = this._title;
+    console.log('getcard');
     this._tempCard.querySelector('.card__image').src = this._image;
     this._tempCard.querySelector('.card__image').alt = this._title;
     this._getListeners();

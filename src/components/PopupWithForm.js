@@ -13,8 +13,8 @@ export default class PopupWithForm extends Popup {
         const inputValues = {};
         this._inputList.forEach((input) => {
             inputValues[input.name] = input.value;
-        });
-        return inputValues;
+        }); console.log(inputValues);
+        return  inputValues;
     }
 /* перезаписывает родительский closePopup для сбрасывания формы */
     closePopup() {

@@ -24,8 +24,10 @@ const editProfilePopup = new PopupWithForm ('.popup_profile', submitEditProfileF
 function submitAddCardForm(inputValues) {
   const card = {
       name: inputValues.place,
-      link: inputValues.url,
+      link: inputValues.link,
   };
+  console.log(card.name);
+  console.log(card.link);
   cardSection.addItem(createCard(card));
   addCardPopup.closePopup();
 }
