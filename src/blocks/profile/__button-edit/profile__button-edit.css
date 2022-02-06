@@ -7,6 +7,9 @@
   padding: 0;
   align-self: center;
   background: none;
+  background-image: url(../../../images/edit.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .profile__button-edit:hover {
