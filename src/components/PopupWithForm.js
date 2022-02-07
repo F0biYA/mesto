@@ -6,6 +6,7 @@ export default class PopupWithForm extends Popup {
         this._form = this._popup.querySelector('.form');
         this._submitForm = submitForm;
         this._inputList = Array.from (this._form.querySelectorAll('.form__field'));
+        this._subbmitButton = this._popup.querySelector('.form__submit-card');
     };
 
         /* приватный метод собирающий данные полей формы*/
@@ -19,6 +20,8 @@ export default class PopupWithForm extends Popup {
 /* перезаписывает родительский closePopup для сбрасывания формы */
     closePopup() {
         this._form.reset();
+        this._subbmitButton.disabled = true;
+        this._subbmitButton.classList.add('form__submit_disabled');
         super.closePopup();
     }
 

@@ -7,7 +7,7 @@ export default class Section {
 
   /*добавить в контейнер DOM элемент */
   addItem(element) {
-    this._container.append(element);
+    this._container.prepend(element);
   }
 
   /*отрисовка всех элементов с внешней функцией renderer*/
