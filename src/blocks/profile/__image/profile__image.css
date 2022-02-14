@@ -5,9 +5,10 @@
   padding: 0;
   border-radius: 50%;
   object-fit: cover;
-  transition: opacity .5s ease-in-out ;
+  transition: opacity .5s ease-in-out;
 
 }
+
 .profile__image:hover {
   opacity: 0.2;
   cursor: pointer;
