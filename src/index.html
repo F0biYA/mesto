@@ -12,13 +12,15 @@
   <div class="page">
     <header class="header">
       <div class="header__logo">
-     </div>
+      </div>
     </header>
 
     <main class="content">
       <section class="profile">
         <div class="profile__block">
-          <img class="profile__image" src="<%=require('./images/photopprofile.jpg')%>" alt="Фото Профиля">
+          <div class="profile__image-block">
+            <img class="profile__image" src="<%=require('./images/photopprofile.jpg')%>" alt="Фото Профиля">
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__button-edit">
@@ -45,7 +47,30 @@
             <input id="job" type="text" name="job" placeholder="Исследователь океана"
               class="form__field form__field_input_job" required minlength="2" maxlength="200">
             <span id="job-error" class=""></span>
-            <button type="submit" class="form__submit">Сохранить</button>
+            <button type="submit" class="form__submit form__submit-profile">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_avatar">
+        <div class="popup__container">
+          <button type="button" class="popup__button-close popup__button-close_profile">
+          </button>
+          <form name="avatarForm" class="form form_avatar">
+            <h3 class="form__title">Обновить аватар</h3>
+            <input id="avatar" name="link" type="url" placeholder="Ссылка на аватар"
+              class="form__field form__field_input_avatar " required>
+            <span id="avatar-error" class=""></span>
+            <button type="submit" class="form__submit form__submit-avatar">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_confirm">
+        <div class="popup__container">
+          <button type="button" class="popup__button-close popup__button-close_confirm">
+          </button>
+          <form name="confirmForm" class="form form_confirm">
+            <h3 class="form__title">Вы уверены?</h3>
+            <button type="submit" class="form__submit form__submit-confirm">Да</button>
           </form>
         </div>
       </div>
@@ -84,12 +109,15 @@
       <img src="#" alt="" class="card__image">
       <div class="card__caption">
         <h2 class="card__text"></h2>
-        <button type="button" class="card__button-heart"></button>
+        <div class="card__like-box">
+          <button type="button" class="card__button-heart"></button>
+          <span class="card__like-amount"></span>
+        </div>
         <button type="button" class="card__button-delete"></button>
       </div>
     </div>
   </template>
-<!--<script src="./pages/index.js" type="module"></script>-->
+  <!--<script src="./pages/index.js" type="module"></script>-->
 </body>
 
 </html>

@@ -11,9 +11,10 @@ export default class Section {
   }
 
   /*отрисовка всех элементов с внешней функцией renderer*/
-  renderItems() {
-    this._renderedItems.forEach(item => {
+  renderItems(item) {
+    item.forEach(item => {
       this._renderer(item);
+
     });
   }
 }
