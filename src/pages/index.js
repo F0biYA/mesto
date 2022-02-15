@@ -73,7 +73,6 @@ function likeCard(card) {
         console.log(`Невозможно поставить лайк карточке ${err}`);
       });
   } else {
-    console.log('else');
     api.deleteLike(card.getCardId())
       .then((result) => {
         card.handleLikeImage(result)
@@ -120,8 +119,8 @@ function submitAddCardForm(inputValues) {
 
 /* функция подтверждения для изменений информации в профиле */
 function submitEditProfileForm(inputValues) {
-  buttonEditProfile.textContent = 'Сохранение...'
-  //console.log(inputValues);
+  //buttonEditProfile.textContent = 'Сохранение...'
+  editProfilePopup.renderLoading(true);
   api.patchUserInfo(inputValues)
     .then((result) => {
       addUserInfo.setUserInfo({
@@ -135,12 +134,12 @@ function submitEditProfileForm(inputValues) {
       console.log(`Невозможно изменить информацию о пользователе ${err}`);
     })
     .finally(() => {
-      buttonEditProfile.textContent = 'Сохранить';
+      //buttonEditProfile.textContent = 'Сохранить';
+      editProfilePopup.renderLoading(false);
     });
 }
 /* функция подтверждения  изменениЯ аватара в профиле */
 function submitEditAvatarForm(inputValues) {
-  //console.log(inputValues.link);
   buttonSaveAvatar.textContent = 'Сохранение...';
   api.patchAvatar(inputValues.link)
     .then((result) => {
@@ -172,25 +171,23 @@ function createCard(card) {
 }
 
 /* получение и обработки карточек с сервера*/
-api.getServerCards()
+const promiseCards = api.getServerCards()
   .then((cardsArray) => {
     return cardsArray
   })
-  .then((cardsArray) => {
+  /*.then((cardsArray) => {
     cardSection.renderItems(cardsArray);
   })
   .catch((err) => {
     console.log(`Невозможно отобразить карточки с сервера ${err}`);
-  })
+  })*/
 
 /*получение информации о пользователе с сервера*/
-api.getUserInfo()
+const promiseUser = api.getUserInfo()
   .then((userObject) => {
-    console.log(userObject)
     return userObject
   })
-  .then((result) => {
-    console.log(result.avatar)
+  /*.then((result) => {
     addUserInfo.setUserInfo({
       name: result.name,
       job: result.about,
@@ -200,8 +197,20 @@ api.getUserInfo()
   })
   .catch((err) => {
     console.log(`Невозможно получить информацию о пользователе ${err}`);
+  });*/
+  Promise.all([promiseUser, promiseCards])
+  .then(([userObject, cardsArray]) => {
+    addUserInfo.setUserInfo({
+      name: userObject.name,
+      job: userObject.about,
+      avatar: userObject.avatar
   });
-
+  addUserInfo.setId(userObject._id);
+  cardSection.renderItems(cardsArray);
+})
+.catch((err) => {
+  console.log(`Невозможно загрузить информацию с сервера ${err}`);
+});
 
 /* слушатель кнопки открытия попапа добавления карточек*/
 btnOpenPopupCard.addEventListener('click', function () {

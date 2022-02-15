@@ -12,7 +12,7 @@ export default class Card {
     this._handleLikeCard = handleLikeCard;
     this._likeAmount = card.likes.length;
     this._isLike = card.likes.some(item => item._id == this._userId);
-    //console.log(this._isLike);
+
   }
 
   /*метод возвращающий состояние лайка карточки*/
@@ -22,7 +22,6 @@ export default class Card {
 
   /*метод возвращаюший id карточки */
   getCardId() {
-    console.log('getCardId');
     return this._cardId;
   }
 
@@ -55,7 +54,6 @@ export default class Card {
       this._tempCard.querySelector('.card__button-heart').classList.add('card__button-heart_active');
     }
     this._getListeners();
-    //console.log(this._likeAmount);
     if (!(this._cardOwnerId == this._userId)) {
       this._tempCard.querySelector('.card__button-delete').classList.add('card__button-delete_hide')
     }
@@ -71,12 +69,10 @@ export default class Card {
 
   /*метод срабатыаания лайка (переделан из приватного в публичный)*/
   handleLikeImage = (card) => {
-    this._isLike = !this._isLike
-    //console.log(card.likes.length);
+    this._isLike = !this._isLike;
     this._tempCard.querySelector('.card__like-amount').textContent = card.likes.length;
     this._tempCard.querySelector('.card__button-heart').classList.toggle('card__button-heart_active');
     this._tempCard.querySelector('.card__like-amount').textContent = card.likes.length;
-    //console.log(card.likes.length);
   }
 
 

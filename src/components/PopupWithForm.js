@@ -9,12 +9,19 @@ export default class PopupWithForm extends Popup {
     this._subbmitButton = this._popup.querySelector('.form__submit');
   };
 
+    /* функция изменения текста кнопки сабмита при загрузке*/
+  renderLoading(isLoading) {
+    if (isLoading) {
+        this._subbmitButton.textContent = 'Сохранение...';
+    }
+      this._subbmitButton.textContent = 'Сохранить';
+}
   /* приватный метод собирающий данные полей формы*/
   _getInputValues = () => {
     const inputValues = {};
     this._inputList.forEach((input) => {
       inputValues[input.name] = input.value;
-    }); console.log(inputValues);
+    });
     return inputValues;
   }
   /* перезаписывает родительский closePopup для сбрасывания формы*/

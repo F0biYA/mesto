@@ -29,6 +29,5 @@ export default class UserInfo {
   /* публичный метод установкиid*/
   setId(id) {
     this._id = id;
-    console.log(this._id);
   }
 }
