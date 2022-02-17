@@ -1,5 +1,4 @@
 import "./index.css";
-//import { initialCards } from "../utils/cards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -134,7 +133,6 @@ function submitEditProfileForm(inputValues) {
       console.log(`Невозможно изменить информацию о пользователе ${err}`);
     })
     .finally(() => {
-      //buttonEditProfile.textContent = 'Сохранить';
       editProfilePopup.renderLoading(false);
     });
 }
@@ -175,29 +173,13 @@ const promiseCards = api.getServerCards()
   .then((cardsArray) => {
     return cardsArray
   })
-  /*.then((cardsArray) => {
-    cardSection.renderItems(cardsArray);
-  })
-  .catch((err) => {
-    console.log(`Невозможно отобразить карточки с сервера ${err}`);
-  })*/
 
 /*получение информации о пользователе с сервера*/
 const promiseUser = api.getUserInfo()
   .then((userObject) => {
     return userObject
   })
-  /*.then((result) => {
-    addUserInfo.setUserInfo({
-      name: result.name,
-      job: result.about,
-      avatar: result.avatar
-    });
-    addUserInfo.setId(result._id);
-  })
-  .catch((err) => {
-    console.log(`Невозможно получить информацию о пользователе ${err}`);
-  });*/
+
   Promise.all([promiseUser, promiseCards])
   .then(([userObject, cardsArray]) => {
     addUserInfo.setUserInfo({
